@@ -1,0 +1,344 @@
+/* =========================================
+   PALETA DE COLORES Y VARIABLES GLOBALES
+   ========================================= */
+:root {
+    --brown-dark: #4a3424;
+    --brown-light: #5c4332;
+    --cream-bg: #f9f6f0;
+    --cream-bar: #f2eadd;
+    --text-dark: #222;
+    --text-gray: #555;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Playfair Display', serif;
+}
+
+/* =========================================
+   HEADER Y NAVEGACIÓN
+   ========================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background-color: var(--white);
+}
+
+.logo {
+    font-size: 32px;
+    color: var(--brown-dark);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a, .nav-date {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--text-dark);
+}
+
+.admin-link {
+    color: var(--brown-light) !important;
+    font-weight: bold !important;
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+}
+
+.admin-link i {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.nav-date {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.btn-reservar, .btn-buscar {
+    background-color: var(--brown-dark);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reservar:hover, .btn-buscar:hover {
+    background-color: var(--brown-light);
+}
+
+/* =========================================
+   SECCIÓN HERO (IMAGEN PRINCIPAL)
+   ========================================= */
+.hero {
+    height: 480px;
+    background-image: url('assets/taxco-hero.jpg'); 
+    background-size: cover;
+    background-position: center 30%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+    position: relative;
+    color: var(--white);
+    text-align: center;
+    margin-top: -80px;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+/* =========================================
+   CONTENEDOR SUPERPUESTO (BUSCADOR CENTRADO)
+   ========================================= */
+.overlap-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: -55px; /* Centra la barra exactamente en el límite de la imagen */
+    z-index: 10;
+}
+
+.booking-bar {
+    background-color: var(--cream-bar);
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.input-group label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.input-field {
+    background: var(--white);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.input-field input[type="date"],
+.input-field select {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    color: var(--text-gray);
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-buscar {
+    padding: 15px 30px;
+}
+
+/* =========================================
+   TARJETAS DE API
+   ========================================= */
+.api-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: var(--white);
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.card small {
+    display: block;
+    margin-top: 10px;
+    color: var(--text-gray);
+    font-size: 12px;
+}
+
+.weather-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 100px;
+}
+
+.weather-icon {
+    font-size: 40px;
+}
+
+.weather-temp {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.map-iframe {
+    width: 100%;
+    height: 100px;
+    border: none;
+    border-radius: 8px;
+}
+
+.gallery-mini {
+    display: flex;
+    gap: 5px;
+    height: 100px;
+}
+
+.gallery-mini img {
+    flex: 1;
+    width: 33%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* =========================================
+   SECCIÓN EXPERIENCIA
+   ========================================= */
+.experiencia {
+    max-width: 1100px;
+    margin: 60px auto 40px auto;
+}
+
+.experiencia h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.exp-textos {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.exp-item {
+    flex: 1;
+}
+
+.exp-item h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.exp-item p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.img-terraza {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   FOOTER (Línea Institucional)
+   ========================================= */
+.footer {
+    background-color: var(--brown-dark);
+    color: var(--white);
+    padding: 20px 40px; 
+    font-size: 13px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.footer-left p, .footer-right p {
+    margin: 0;
+    color: #d4c8b8; 
+}
+
+.footer-left i {
+    margin-right: 5px;
+}
+
+/* Iconos de Redes Sociales */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    margin: 0; 
+}
+
+.social-icons a {
+    color: var(--white);
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d4c8b8;
+    transform: translateY(-3px);
+}
