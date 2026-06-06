@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lux Taxco - Inicio</title>
+    <link rel="icon" type="image/jpeg" href="assets/logo-lux-taxco-pequeño.jpg">
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Biblioteca de Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script>
+</head>
+<body>
+
+    <div class="header-fondo"> 
+
+        <nav class="header">
+            
+            <a href="#" class="logo-link">
+                <img src="assets/logo-lux-taxco.jpg" alt="Logo Lux Taxco" class="logo-nav">
+            </a>
+
+            <ul class="menu-enlaces">
+                <li><a href="/" class="active">Inicio</a></li> 
+                <li><a href="#habitaciones">Habitaciones</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#unirse">Unirse</a></li>
+            </ul>
+
+            <button class="btn-reservar-nav">Reservar Ahora</button>
+            
+        </nav>
+
+    </div>
+
+<!-- BARRA DE NOTICIAS / TICKER PROMOCIONAL    -->
+<div class="ticker-contenedor">
+    <div class="ticker-texto">
+        <span class="ticker-item">🔥 HOT SALE: Reserva en línea y obtén 5% de descuento en tu estancia.</span>
+        <span class="ticker-item">⚽ Paquete Futbolero: Pregunta por nuestra promo para ver todos los partidos del Mundial.</span>
+        <span class="ticker-item">🍝 Escapada Gastronómica: Disfruta de un auténtico platillo de pasta de cortesía en tu primera noche.</span>
+        <span class="ticker-item">✨ Lux Taxco: Tu refugio boutique en el corazón de la plata.</span>
+        <span class="ticker-item">🔥 HOT SALE: Reserva en línea y obtén 5% de descuento en tu estancia.</span>
+        <span class="ticker-item">⚽ Paquete Futbolero: Pregunta por nuestra promo para ver todos los partidos del Mundial.</span>
+        <span class="ticker-item">🍝 Escapada Gastronómica: Disfruta de un auténtico platillo de pasta de cortesía en tu primera noche.</span>
+        <span class="ticker-item">✨ Lux Taxco: Tu refugio boutique en el corazón de la plata.</span>
+    </div>
+</div>
+
+    <!-- HERO CARRUSEL PRINCIPAL                   -->
+    <section class="hero hero-seccion">
+        
+        <!-- Las Imágenes del Carrusel (Puedes cambiar las URLs por las tuyas) -->
+        <div class="slide-hero activa" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780378801/taxco-hero_ju2qxg.png');"></div>
+        <div class="slide-hero" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780379310/lux_taxco_alberca_g1snki.png');"></div>
+        <div class="slide-hero" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780379701/masaje_lux_taxco_jyca7v.png');"></div>
+
+        <!-- Botones de Navegación -->
+        <button class="btn-flecha prev">&#10094;</button>
+        <button class="btn-flecha next">&#10095;</button>
+
+        <!-- El contenido central que ya tenías -->
+        <div class="hero-content hero-contenido-central">
+            <h1>Lux Taxco: Tu refugio boutique en<br>el corazón de la plata</h1>
+        </div>
+    </section>
+
+    <!-- Contenedor Superpuesto (Buscador y APIs) -->
+    <section class="barra-reservacion-contenedor">
+    <div class="reserva-caja">
+        
+        <div class="reserva-item">
+            <label>Fechas de estancia</label>
+            <input type="text" id="rango-fechas" placeholder="Selecciona Check-in - Check-out" readonly>
+            <span id="noches-texto" class="texto-inferior">Noches: 0</span>
+        </div>
+
+        <div class="reserva-item huespedes-wrapper">
+            <label>Huéspedes (Máx. 4)</label>
+            <div class="huespedes-selector" id="btn-toggle-huespedes">
+                <span id="huespedes-resumen">1 Adulto, 0 Niños</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            
+            <div class="huespedes-dropdown" id="dropdown-huespedes">
+                <div class="fila-contador">
+                    <span>Adultos</span>
+                    <div class="controles">
+                        <button type="button" id="btn-restar-adultos" disabled>-</button>
+                        <span id="contador-adultos">1</span>
+                        <button type="button" id="btn-sumar-adultos">+</button>
+                    </div>
+                </div>
+                <div class="fila-contador">
+                    <span>Niños</span>
+                    <div class="controles">
+                        <button type="button" id="btn-restar-ninos" disabled>-</button>
+                        <span id="contador-ninos">0</span>
+                        <button type="button" id="btn-sumar-ninos">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-buscar-disponibilidad">BUSCAR DISPONIBILIDAD</button>
+
+    </div>
+</section>
+
+        <!-- Agregamos display: none; para que nazca invisible -->
+<section id="seccion-resultados" style="display: flex; gap: 20px; justify-content: center; padding: 40px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;"></section>
+
+        <!-- Tarjetas de Integración API -->
+        <div class="api-cards">
+            
+            <div class="card card-mapa">
+                <h3>Ubicación Interactiva</h3>
+                <iframe src="https://maps.google.com/maps?q=Centro%20Historico,%20Taxco,%20Guerrero&t=&z=15&ie=UTF8&iwloc=&output=embed" class="map-iframe" style="border:0; width: 100%; min-height: 180px; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <small>Centro Histórico, Taxco<br>Mapa Interactivo</small>
+            </div>
+
+            <div class="card card-clima">
+                <h3>Clima en Taxco</h3>
+                <div class="card-content weather-content">
+                    <span class="weather-icon" id="weather-icon">⏳</span>
+                    <span class="weather-temp" id="weather-temp">Cargando clima...</span>
+                </div>
+                <small>API OpenWeather</small>
+            </div>
+        </div>
+
+<section id="habitaciones" class="seccion-habitaciones">
+    <h2 class="titulo-seccion">Nuestras Habitaciones</h2>
+
+    <div class="fila-habitacion">
+        <div class="hab-imagen" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686374/161660596_rdd6nc.jpg');"></div>
+        <div class="hab-info">
+            <h3>Habitación Estándar</h3>
+            <p>Ideal para parejas o viajeros solos. Disfruta de una cama queen size, baño privado con acabados cálidos y todas las comodidades esenciales para recargar energías después de explorar las calles empedradas.</p>
+            <ul class="hab-amenidades">
+                <li><i class="fa-solid fa-wifi"></i> Wi-Fi de alta velocidad</li>
+                <li><i class="fa-solid fa-tv"></i> Smart TV</li>
+                <li><i class="fa-solid fa-mug-hot"></i> Cafetera</li>
+            </ul>
+            <button class="btn-reservar-hab">Ver Disponibilidad</button>
+        </div>
+    </div>
+
+    <div class="fila-habitacion reversa">
+        <div class="hab-imagen" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686367/161677913_gk9ol0.jpg');"></div>
+        <div class="hab-info">
+            <h3>Suite Colonial</h3>
+            <p>Nuestra habitación insignia. Espacios amplios con un toque rústico y elegante, balcón privado con vista al pueblo y una pequeña sala de estar perfecta para disfrutar de tu café matutino.</p>
+            <ul class="hab-amenidades">
+                <li><i class="fa-solid fa-bed"></i> Cama King Size</li>
+                <li><i class="fa-solid fa-mountain-sun"></i> Balcón con vista</li>
+                <li><i class="fa-solid fa-wine-glass"></i> Frigobar</li>
+            </ul>
+            <button class="btn-reservar-hab">Ver Disponibilidad</button>
+        </div>
+    </div>
+
+    <div class="fila-habitacion">
+        <div class="hab-imagen" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780690354/161677923_gwhphc.jpg');"></div>
+        <div class="hab-info">
+            <h3>Penthouse Panorámico</h3>
+            <p>El lujo en su máxima expresión. Ubicado en el último piso, ofrece una vista inigualable de la parroquia de Santa Prisca desde su terraza, además de jacuzzi y atención personalizada.</p>
+            <ul class="hab-amenidades">
+                <li><i class="fa-solid fa-hot-tub-person"></i> Jacuzzi privado</li>
+                <li><i class="fa-solid fa-panorama"></i> Terraza panorámica</li>
+                <li><i class="fa-solid fa-bell-concierge"></i> Room service</li>
+            </ul>
+            <button class="btn-reservar-hab">Ver Disponibilidad</button>
+        </div>
+    </div>
+</section>
+
+<section id="servicios" class="seccion-servicios">
+    <h2 class="titulo-seccion">Experiencia y Servicios</h2>
+    
+    <div class="contenedor-servicios">
+        <div class="tarjeta-servicio">
+            <div class="servicio-img" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686376/162093161_ctlbav.jpg');"></div>
+            <div class="servicio-contenido">
+                <h3>Alberca</h3>
+                <p>Relájate bajo el sol con una vista inigualable del pueblo mágico de Taxco.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta-servicio">
+            <div class="servicio-img" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686368/163424177_fbfyiq.jpg');"></div>
+            <div class="servicio-contenido">
+                <h3>Restaurante</h3>
+                <p>Descubre la auténtica gastronomía local y deliciosos platillos internacionales.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta-servicio">
+            <div class="servicio-img" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="servicio-contenido">
+                <h3>Bar</h3>
+                <p>Disfruta de coctelería de autor y bebidas premium al atardecer en nuestra terraza.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta-servicio">
+            <div class="servicio-img" style="background-image: url('https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686369/161678326_ikvbui.jpg');"></div>
+            <div class="servicio-contenido">
+                <h3>Spa</h3>
+                <p>Tratamientos y masajes diseñados para renovar tu cuerpo y mente al 100%.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta-servicio">
+            <div class="servicio-img" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="servicio-contenido">
+                <h3>Gimnasio</h3>
+                <p>Mantén tu rutina con nuestro equipamiento moderno, pesas y área de cardio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="galeria" class="seccion-galeria">
+    <h2 class="titulo-seccion">¡Conoce la belleza de Lux Taxco!</h2>
+    <div class="linea-decorativa"></div>
+    
+    <div class="galeria-contenedor">
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686443/590503623_pfxmyk.jpg" alt="Hotel"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686376/162093161_ctlbav.jpg" alt="Habitación"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686376/161677573_vzecyt.jpg" alt="Cama"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686375/12175249_jy4uiv.jpg" alt="Alberca"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686375/125233404_iv5baz.jpg" alt="Restaurante"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686374/161660596_rdd6nc.jpg" alt="Spa"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686374/3696310_tx2lu7.jpg" alt="Interior"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686373/163423859_ztljen.jpg" alt="Balcón"></div>
+        <div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686373/590503674_nnrmat.jpg" alt="Sala"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686372/161677891_zy810d.jpg" alt="Baño"></div>
+
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686372/161676463_tmukoj.jpg" alt="Decoración"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686371/12175270_bgb4sx.jpg" alt="Fachada"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686371/162093202_t0vzsa.jpg" alt="Terraza"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686370/162093145_yklemd.jpg" alt="Lobby"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686370/161679021_qlg8o9.jpg" alt="Vista"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686369/161678326_ikvbui.jpg" alt="Comida"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686369/161677923_kf27wz.jpg" alt="Detalles"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686368/163424177_fbfyiq.jpg" alt="Suite"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686368/163423978_to4jyx.jpg" alt="Desayuno"></div>
+<div class="galeria-item"><img src="" alt="Penthouse"></div>
+
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686367/161677913_gk9ol0.jpg" alt="Jardín"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686367/19779303_kixdzd.jpg" alt="Pasillo"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686366/19779325_s0ll9j.jpg" alt="Piscina"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686366/19779284_l2qcnf.jpg" alt="Bar"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686365/19779274_d8papj.jpg" alt="Resort"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686365/19779222_z2cya0.jpg" alt="Habitación de Lujo"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686364/12175251_yihedw.jpg" alt="Edificio"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686364/12175256_ktknsw.jpg" alt="Baño moderno"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686364/3696315_tbxipw.jpg" alt="Recepción"></div>
+<div class="galeria-item"><img src="https://res.cloudinary.com/djtu5t9cl/image/upload/v1780686363/590503505_uxm93i.jpg" alt="Servicio"></div>
+    </div>
+</section>
+
+<!-- ========================================= -->
+<!-- SECCIÓN DE CONTACTO                       -->
+<!-- ========================================= -->
+<section id="contacto" class="seccion-contacto">
+    <div class="contacto-contenedor">
+        
+        <!-- Columna Izquierda: Información -->
+        <div class="contacto-info">
+            <h2>¡Contáctanos!</h2>
+            <div class="linea-decorativa-contacto"></div>
+            <p>Estamos aquí para ayudarte a tener la mejor experiencia posible. Si tienes alguna duda, queja o comentario, por favor, no dudes en ponerte en contacto con nosotros.</p>
+            <p>Tu opinión es muy importante para nosotros, y estamos listos para escucharte.</p>
+            
+            <!-- Redes Sociales (Sin LinkedIn) -->
+            <div class="contacto-redes">
+                <a href="#" class="icono-red"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icono-red"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <!-- Botones Directos (Área roja) -->
+            <div class="contacto-directo">
+                <div class="directo-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span class="numero-falso">+52 762 123 4567</span>
+                    <a href="#" class="btn-accion btn-whatsapp">Enviar Mensaje</a>
+                </div>
+                <div class="directo-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="numero-falso">+52 762 987 6543</span>
+                    <a href="#" class="btn-accion btn-llamar">Llamar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario -->
+        <div class="contacto-form-caja">
+            <h3>¿Necesitas ayuda o quieres hacernos llegar tus comentarios?</h3>
+            <p class="subtitulo-form">Usa nuestro formulario de contacto.</p>
+            
+            <form id="formulario-contacto">
+                <div class="grupo-input">
+                    <input type="text" placeholder="Nombre completo *" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="tel" placeholder="Teléfono *" required>
+                </div>
+                <div class="grupo-input">
+                    <input type="email" placeholder="Correo electrónico *" required>
+                </div>
+                <div class="grupo-input">
+                    <textarea placeholder="Mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar-contacto">ENVIAR</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+    <!-- ========================================= -->
+<!-- PIE DE PÁGINA (FOOTER)                    -->
+<!-- ========================================= -->
+<footer class="footer-lux">
+    <!-- El triangulito superior decorativo -->
+    <div class="footer-triangulo"></div>
+    
+    <div class="footer-contenedor">
+        <!-- Columna Izquierda: Logo y Ubicación -->
+        <div class="footer-columna footer-logo">
+            <span class="subtitulo-logo">HOTEL</span>
+            <h2>LUX TAXCO</h2>
+            <p>BOUTIQUE & RESERVACIONES<br>TAXCO DE ALARCÓN<br>MÉXICO</p>
+        </div>
+
+        <!-- Columna Central: Datos de Contacto -->
+        <div class="footer-columna footer-contacto">
+            <ul>
+                <li><i class="fa-solid fa-phone"></i> +52 762 987 6543</li>
+                <li><i class="fa-brands fa-whatsapp"></i> +52 762 123 4567</li>
+                <li><i class="fa-solid fa-envelope"></i> reservaciones@luxtaxco.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Callejón de los Plateros S/N, Centro Histórico, 40200 Taxco de Alarcón, Gro.</li>
+            </ul>
+        </div>
+
+        <!-- Columna Derecha: Redes Sociales -->
+        <div class="footer-columna footer-redes">
+            <h4>Síguenos en redes sociales</h4>
+            <div class="linea-footer"></div>
+            <div class="iconos-redes">
+                <a href="#" class="icono-circular"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icono-circular"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icono-circular"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#" class="icono-circular"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra Inferior: Copyright y Botón de subida -->
+    <div class="footer-bottom">
+        <!-- El href="#" es un truco nativo de HTML para subir al inicio de la página -->
+        <a href="#" class="btn-subir" title="Volver arriba">
+            <i class="fa-solid fa-chevron-up"></i>
+        </a>
+        <p>Copyright 2026 © Hotel Lux Taxco. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+    <!-- Script de interactividad -->
+    <script src="app.js"></script>
+</body>
+</html>

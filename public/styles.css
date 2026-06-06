@@ -1,0 +1,1573 @@
+/* =========================================
+   PALETA DE COLORES Y VARIABLES GLOBALES
+   ========================================= */
+:root {
+    --brown-dark: #4a3424;
+    --brown-light: #5c4332;
+    --cream-bg: #f9f6f0;
+    --cream-bar: #f2eadd;
+    --text-dark: #222;
+    --text-gray: #555;
+    --white: #ffffff;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Esto oculta permanentemente cualquier cosa que se salga hacia los lados */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Playfair Display', serif;
+}
+
+/* =========================================
+   HEADER Y NAVEGACIÓN
+   ========================================= */
+/* El nuevo contenedor que pinta toda la pantalla de blanco */
+/* 1. El fondo gigante que abarca toda la pantalla */
+.header-fondo {
+    background-color: #ffffff !important;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. Tu caja centrada (La opción nuclear para limpiar líneas fantasma) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    
+    /* 👇 LA MAGIA PARA MATAR LAS LÍNEAS 👇 */
+    background-color: transparent !important; /* Lo hacemos invisible */
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.logo {
+    font-size: 32px;
+    color: var(--brown-dark);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a, .nav-date {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--text-dark);
+}
+
+.admin-link {
+    color: var(--brown-light) !important;
+    font-weight: bold !important;
+    padding-left: 20px;
+}
+
+.admin-link i {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.nav-date {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.btn-reservar, .btn-buscar {
+    background-color: var(--brown-dark);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reservar:hover, .btn-buscar:hover {
+    background-color: var(--brown-light);
+}
+
+/* ========================================= */
+/* LOGOTIPO DE LA BARRA DE NAVEGACIÓN        */
+/* ========================================= */
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-nav {
+    /* Esta es la clave: limita la altura para que no rompa la barra */
+    max-height: 55px; 
+    width: auto; /* Mantiene la proporción perfecta sin deformarse */
+    transition: transform 0.3s ease; /* Pequeña animación opcional */
+}
+
+/* Efecto elegante al pasar el ratón sobre el logo */
+.logo-nav:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   SECCIÓN HERO (IMAGEN PRINCIPAL)
+   ========================================= */
+.hero {
+    height: 480px;
+    background-image: url('assets/taxco-hero.png'); 
+    background-size: cover;
+    background-position: center 30%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+    position: relative;
+    color: var(--white);
+    text-align: center;
+    margin-top: -80px;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+/* =========================================
+   CONTENEDOR SUPERPUESTO (BUSCADOR CENTRADO)
+   ========================================= */
+.overlap-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: -55px; /* Centra la barra exactamente en el límite de la imagen */
+    z-index: 10;
+}
+
+.booking-bar {
+    background-color: var(--cream-bar);
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.input-group label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.input-field {
+    background: var(--white);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.input-field input[type="date"],
+.input-field select {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    color: var(--text-gray);
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-buscar {
+    padding: 15px 30px;
+}
+
+/* =========================================
+   TARJETAS DE API
+   ========================================= */
+.api-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: var(--white);
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.card small {
+    display: block;
+    margin-top: 10px;
+    color: var(--text-gray);
+    font-size: 12px;
+}
+
+.weather-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 100px;
+}
+
+.weather-icon {
+    font-size: 40px;
+}
+
+.weather-temp {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.map-iframe {
+    width: 100%;
+    height: 100px;
+    border: none;
+    border-radius: 8px;
+}
+
+.gallery-mini {
+    display: flex;
+    gap: 5px;
+    height: 100px;
+}
+
+.gallery-mini img {
+    flex: 1;
+    width: 33%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* =========================================
+   SECCIÓN EXPERIENCIA
+   ========================================= */
+.experiencia {
+    max-width: 1100px;
+    margin: 60px auto 40px auto;
+}
+
+.experiencia h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.exp-textos {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.exp-item {
+    flex: 1;
+}
+
+.exp-item h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.exp-item p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.img-terraza {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================================
+   FOOTER (Línea Institucional)
+   ========================================= */
+.footer {
+    background-color: var(--brown-dark);
+    color: var(--white);
+    padding: 20px 40px; 
+    font-size: 13px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.footer-left p, .footer-right p {
+    margin: 0;
+    color: #d4c8b8; 
+}
+
+.footer-left i {
+    margin-right: 5px;
+}
+
+/* Iconos de Redes Sociales */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    margin: 0; 
+}
+
+.social-icons a {
+    color: var(--white);
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d4c8b8;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   CARRUSEL DE IMÁGENES (CLOUDINARY)
+   ========================================= */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.carousel-btn {
+    background-color: rgba(92, 64, 51, 0.8); /* Marrón con transparencia */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background-color: var(--brown-dark);
+}
+
+#btn-prev {
+    left: 10px;
+}
+
+#btn-next {
+    right: 10px;
+}
+
+/* =========================================
+   NUEVO LAYOUT: GRID ASIMÉTRICO (API CARDS)
+   ========================================= */
+
+/* Transformamos la caja principal en una cuadrícula */
+/* ========================================= */
+/* CONTENEDOR DE APIs (Acomodo a 2 columnas) */
+/* ========================================= */
+.api-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 🎩 La clave: Exactamente dos columnas del mismo tamaño */
+    gap: 30px; /* El espacio de separación entre ambas tarjetas */
+    max-width: 1200px; /* Evita que se estiren de forma exagerada en pantallas gigantes */
+    margin: 40px auto; /* Centra el contenedor en la pantalla */
+    padding: 0 20px;
+}
+
+/* Aseguramos que la tarjeta tome todo el ancho de su nueva mitad */
+.card {
+    width: 100%;
+    /* (Tus demás estilos de fondo, borde y sombras de .card déjalos intactos si los tienes aquí) */
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES (APIs)          */
+/* ========================================= */
+@media (max-width: 768px) {
+    .api-cards {
+        grid-template-columns: 1fr; /* En celulares, las apilamos en una sola columna vertical */
+    }
+}
+
+/* ========================================= */
+/* ESTRUCTURA DE LA BARRA DE NAVEGACIÓN      */
+/* ========================================= */
+
+/* Contenedor principal de la barra */
+.barra-navegacion {
+    display: flex; /* Esto pone los elementos en línea horizontal */
+    justify-content: space-between; /* Empuja el logo a la izq y el botón a la der */
+    align-items: center; /* Centra todo verticalmente */
+    padding: 15px 50px;
+    background-color: #ffffff; /* Fondo blanco para que resalte */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 1200px; /* 
+    Sombra elegante abajo */
+    position: relative;
+    margin: 0 auto; /* Esto centra toda la barra en la pantalla */
+    width: 100%;
+    z-index: 100; /* Para que siempre flote por encima de la foto del pueblo */
+}
+
+/* El logo / Título */
+.logo-lux {
+    font-size: 28px;
+    font-family: Georgia, serif; /* Tipografía elegante */
+    font-weight: bold;
+    color: #4a3b32;
+    text-decoration: none;
+}
+
+/* La lista central de enlaces */
+.menu-enlaces {
+    display: flex; /* Pone los enlaces uno al lado del otro */
+    list-style: none; /* Le quita los puntos feos a la lista */
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Separación exacta entre cada palabra */
+}
+
+/* El botón derecho de Reservar Ahora */
+.btn-reservar-nav {
+    background-color: #4a3b32; /* Marrón oscuro hotelero */
+    color: #ffffff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-reservar-nav:hover {
+    background-color: #b8860b; /* Dorado al pasar el mouse */
+}
+
+/* ========================================= */
+/* ANIMACIONES DE LA BARRA DE NAVEGACIÓN     */
+/* ========================================= */
+
+/* El texto de los enlaces */
+.menu-enlaces a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: inline-block;
+    position: relative; /* ¡CRÍTICO! Para que la barrita sepa dónde anclarse */
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+/* LA BARRITA SUPERIOR FANTASMA */
+.menu-enlaces a::before {
+    content: ''; /* Elemento vacío que dibujaremos */
+    position: absolute;
+    top: -8px; /* Qué tan arriba del texto va a flotar (ajusta a tu gusto) */
+    left: 50%; /* Arranca desde el centro... */
+    transform: translateX(-50%); /* ...para expandirse hacia los lados */
+    width: 0%; /* Por defecto no tiene ancho (invisible) */
+    height: 3px; /* El grosor de la barrita */
+    background-color: #4a3b32; /* El color café de tu botón */
+    transition: width 0.3s ease; /* Animación fluida al crecer */
+}
+
+/* Efecto: Cuando pasas el ratón, la barrita crece al 100% de ancho */
+.menu-enlaces a:hover::before {
+    width: 100%;
+}
+
+/* Efecto: El botón de Inicio SIEMPRE tiene la barrita al 100% por defecto */
+.menu-enlaces a.active::before {
+    width: 100%;
+}
+
+/* 🎩 EL TRUCO: Cuando el ratón entra a CUALQUIER parte del menú, apagamos la barrita de 'Inicio' */
+.menu-enlaces:hover a.active::before {
+    width: 0%;
+}
+
+/* 🎩 TRUCO PARTE 2: Pero si el ratón se pone específicamente sobre 'Inicio' otra vez, la volvemos a encender */
+.menu-enlaces a.active:hover::before {
+    width: 100%;
+}
+
+/* Efecto general: La barrita crece al 100% en el botón que estés tocando */
+.menu-enlaces a:hover::before {
+    width: 100%;
+}
+
+/* El Logo latente */
+.logo-lux {
+    text-decoration: none;
+    color: #4a3b32;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.logo-lux:hover {
+    transform: scale(1.03);
+}
+
+/* ========================================= */
+/* TICKER PROMOCIONAL (MARQUEE MODERNO)      */
+/* ========================================= */
+
+.ticker-contenedor {
+    width: 100%;
+    background-color: #d32f2f; /* Rojo llamativo para Hot Sale */
+    color: #ffffff;
+    padding: 5px 0;
+    overflow: hidden; /* ¡Clave! Oculta el texto que se sale de los bordes de la pantalla */
+    white-space: nowrap; /* Evita que el texto se rompa y se vaya a la línea de abajo */
+    position: relative;
+    z-index: 90; /* Se asegura de estar encima de la foto, pero debajo de la barra de navegación */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.ticker-texto {
+    display: inline-block;
+    /* Llama a la animación, dura 25 segundos, velocidad constante (linear) y ciclo infinito */
+    animation: moverTicker 40s linear infinite;
+}
+
+/* 🎩 TRUCO PRO: Si el usuario pone el ratón encima, la barra se pausa para leer */
+.ticker-contenedor:hover .ticker-texto {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 60px; /* El espacio de separación entre cada anuncio */
+    letter-spacing: 1px;
+}
+
+/* Los fotogramas clave: Nace a la derecha (100%) y muere a la izquierda (-100%) */
+@keyframes moverTicker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ========================================= */
+/* ESTILOS DEL CARRUSEL HERO                 */
+/* ========================================= */
+
+.hero-seccion {
+    position: relative;
+    height: 50vh; /* Ajusta la altura a tu gusto (70% de la pantalla) */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Capa de las imágenes */
+.slide-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Todas son invisibles por defecto */
+    transition: opacity 1s ease-in-out; /* Transición súper suave de 1 segundo */
+    z-index: 1; /* Nivel base */
+}
+
+.slide-hero.activa {
+    opacity: 1; /* Solo la activa se ve */
+    z-index: 2;
+}
+
+/* Filtro oscuro para que el texto blanco resalte más */
+.slide-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+}
+
+/* El contenido (títulos y buscador) debe estar por encima de todo */
+.hero-contenido-central {
+    position: relative;
+    z-index: 10; 
+    text-align: center;
+    color: white;
+}
+
+/* Botones de pasar imagen */
+.btn-flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(74, 59, 50, 0.6); /* Café semi-transparente */
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 15px 20px;
+    cursor: pointer;
+    z-index: 15; /* Hasta arriba */
+    transition: background-color 0.3s;
+}
+
+.btn-flecha:hover {
+    background-color: #b8860b; /* Dorado al pasar el mouse */
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ========================================= */
+/* SECCIÓN DE HABITACIONES (ZIG-ZAG)         */
+/* ========================================= */
+
+.seccion-habitaciones {
+    padding: 80px 50px;
+    background-color: #f9f7f2; /* Fondo crema muy elegante */
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 36px;
+    font-family: Georgia, serif;
+    color: #4a3b32;
+    margin-bottom: 60px;
+}
+
+/* El bloque contenedor de cada habitación */
+.fila-habitacion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px; 
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra suave de tarjeta */
+}
+
+/* 🎩 LA MAGIA DEL ZIG-ZAG: Voltea la dirección de los elementos */
+.fila-habitacion.reversa {
+    flex-direction: row-reverse;
+}
+
+/* Mitad para la imagen */
+.hab-imagen {
+    flex: 1; /* Ocupa la mitad del espacio disponible */
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Mitad para la información */
+.hab-info {
+    flex: 1; /* Ocupa la otra mitad */
+    padding: 60px;
+}
+
+.hab-info h3 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: #4a3b32;
+    margin-bottom: 15px;
+}
+
+.hab-info p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.hab-amenidades {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hab-amenidades li {
+    font-size: 14px;
+    color: #777;
+}
+
+.hab-amenidades i {
+    color: #b8860b; /* Dorado para los iconos */
+    margin-right: 8px;
+}
+
+/* Botón secundario para las tarjetas */
+.btn-reservar-hab {
+    background-color: transparent;
+    color: #4a3b32;
+    border: 2px solid #4a3b32;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-reservar-hab:hover {
+    background-color: #4a3b32;
+    color: #ffffff;
+}
+
+/* ========================================= */
+/* DISEÑO RESPONSIVO (Celulares y Tablets)   */
+/* ========================================= */
+@media (max-width: 900px) {
+    /* Destruimos el zigzag y apilamos en una sola columna vertical */
+    .fila-habitacion, .fila-habitacion.reversa {
+        flex-direction: column; 
+    }
+    .hab-imagen {
+        width: 100%;
+        height: 300px;
+    }
+    .hab-info {
+        padding: 30px;
+    }
+    .seccion-habitaciones {
+        padding: 40px 20px;
+    }
+}
+
+/* ========================================= */
+/* SECCIÓN DE SERVICIOS (CON IMÁGENES)       */
+/* ========================================= */
+
+.seccion-servicios {
+    padding: 80px 50px;
+    background-color: #ffffff; 
+    text-align: center;
+}
+
+.contenedor-servicios {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* La tarjeta individual */
+.tarjeta-servicio {
+    background-color: #f9f7f2; 
+    border-radius: 12px;
+    width: 30%; 
+    min-width: 280px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* ¡Clave! Corta la imagen para que no tape las esquinas redondas */
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* El contenedor de la fotografía */
+.servicio-img {
+    width: 100%;
+    height: 200px; /* Altura de la foto, puedes subirla a 250px si las quieres más grandes */
+    background-size: cover;
+    background-position: center;
+}
+
+/* El contenedor del texto (abajo de la foto) */
+.servicio-contenido {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Empuja todo para que las tarjetas midan lo mismo */
+}
+
+.servicio-contenido h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #4a3b32;
+    margin-bottom: 10px;
+}
+
+.servicio-contenido p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES (Servicios)     */
+/* ========================================= */
+@media (max-width: 768px) {
+    .tarjeta-servicio {
+        width: 100%; 
+    }
+    .seccion-servicios {
+        padding: 50px 20px;
+    }
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES (Servicios)     */
+/* ========================================= */
+@media (max-width: 768px) {
+    .tarjeta-servicio {
+        width: 100%; /* En celular, cada tarjeta ocupa toda la pantalla */
+    }
+    .seccion-servicios {
+        padding: 50px 20px;
+    }
+}
+
+/* ========================================= */
+/* SECCIÓN DE GALERÍA (MASONRY COLLAGE)      */
+/* ========================================= */
+
+.seccion-galeria {
+    padding: 80px 20px;
+    background-color: #f9f7f2; /* Mismo fondo crema de habitaciones */
+    text-align: center;
+}
+
+.seccion-galeria .titulo-seccion {
+    color: #0b3d91; /* Un tono azul oscuro elegante como en tu imagen de referencia */
+    margin-bottom: 10px;
+}
+
+.linea-decorativa {
+    width: 50px;
+    height: 2px;
+    background-color: #ccc;
+    margin: 0 auto 40px auto;
+}
+
+/* El motor del Collage */
+.galeria-contenedor {
+    column-count: 3; /* 3 columnas en computadoras */
+    column-gap: 15px; /* Espacio horizontal entre fotos */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cada cuadrito de foto */
+.galeria-item {
+    break-inside: avoid; /* Evita que una foto se parta a la mitad entre columnas */
+    margin-bottom: 15px; /* Espacio vertical entre fotos */
+    overflow: hidden; /* ¡Súper importante para que el zoom no se salga! */
+    border-radius: 4px; /* Un pequeño borde redondeado */
+    background-color: #000; /* Fondo negro por si la imagen tarda en cargar */
+    cursor: pointer;
+}
+
+/* La imagen base */
+.galeria-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease; /* Configura la velocidad del zoom */
+}
+
+/* El efecto al pasar el ratón */
+.galeria-item:hover img {
+    transform: scale(1.08); /* Crece la imagen un 8% */
+    opacity: 0.9; /* Le da un pequeñísimo oscurecimiento elegante */
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES (Galería)       */
+/* ========================================= */
+@media (max-width: 900px) {
+    .galeria-contenedor {
+        column-count: 2; /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria-contenedor {
+        column-count: 1; /* 1 columna en celulares */
+    }
+}
+
+/* ========================================= */
+/* SECCIÓN DE CONTACTO                       */
+/* ========================================= */
+.seccion-contacto {
+    /* Fondo que simula la vista del hotel */
+    background-image: url('https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto parallax elegante */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La tarjeta blanca principal */
+.contacto-contenedor {
+    background-color: rgba(255, 255, 255, 0.95); /* Blanco ligeramente transparente */
+    max-width: 1100px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    display: flex;
+    overflow: hidden;
+}
+
+/* --- LADO IZQUIERDO --- */
+.contacto-info {
+    flex: 1;
+    padding: 50px;
+    background-color: rgba(249, 247, 242, 0.5); /* Crema muy suave */
+    border-right: 1px solid #eee;
+}
+
+.contacto-info h2 {
+    color: #4a3b32;
+    font-size: 32px;
+    font-family: Georgia, serif;
+}
+
+.linea-decorativa-contacto {
+    width: 40px;
+    height: 2px;
+    background-color: #b8860b;
+    margin: 15px 0 25px 0;
+}
+
+.contacto-info p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.contacto-redes {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.icono-red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #4a3b32;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.icono-red:hover {
+    background-color: #b8860b;
+}
+
+/* --- BOTONES DIRECTOS (Área Roja) --- */
+.contacto-directo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.directo-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.directo-item i {
+    font-size: 24px;
+    color: #4a3b32;
+}
+
+.numero-falso {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    width: 140px; /* Alinea los botones rectos */
+}
+
+.btn-accion {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-whatsapp {
+    background-color: #25D366; /* Verde oficial de WhatsApp */
+}
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+}
+
+.btn-llamar {
+    background-color: #4a3b32; /* Café del hotel */
+}
+.btn-llamar:hover {
+    background-color: #b8860b;
+}
+
+/* --- LADO DERECHO (Formulario) --- */
+.contacto-form-caja {
+    flex: 1.2;
+    padding: 50px;
+    text-align: center;
+}
+
+.contacto-form-caja h3 {
+    color: #4a3b32;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-family: Georgia, serif;
+}
+
+.subtitulo-form {
+    color: #777;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.grupo-input {
+    margin-bottom: 15px;
+}
+
+.grupo-input input, 
+.grupo-input textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.grupo-input input:focus, 
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: #b8860b;
+}
+
+.btn-enviar-contacto {
+    width: 100%;
+    padding: 15px;
+    background-color: #4a3b32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar-contacto:hover {
+    background-color: #b8860b;
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES                 */
+/* ========================================= */
+@media (max-width: 900px) {
+    .contacto-contenedor {
+        flex-direction: column; /* Apila las columnas verticalmente */
+    }
+    .contacto-info {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+}
+@media (max-width: 450px) {
+    .directo-item {
+        flex-direction: column; /* Apila el numero y el botón si la pantalla es muy chica */
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* ========================================= */
+/* PIE DE PÁGINA (FOOTER LUX)                */
+/* ========================================= */
+
+.footer-lux {
+    background-color: #4a3b32; /* 👈 Un café más claro, a juego con tus botones */
+    color: #f9f7f2; 
+    position: relative;
+    padding-top: 40px;
+    font-family: Arial, sans-serif;
+    
+    /* 👇 La magia para que abarque toda la pantalla 👇 */
+    width: 100vw; /* Viewport Width = 100% de la pantalla del dispositivo */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+}
+
+/* El truco del triángulo superior usando bordes de CSS */
+.footer-triangulo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #ffffff; /* Este color debe coincidir con el fondo de la sección de arriba */
+}
+
+.footer-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 30px 40px;
+    flex-wrap: wrap; /* Permite que las columnas bajen en celulares */
+    gap: 25px;
+}
+
+.footer-columna {
+    flex: 1;
+    min-width: 250px; /* Evita que las columnas se aplasten demasiado */
+}
+
+/* --- Columna Logo --- */
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo .subtitulo-logo {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.footer-logo h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 5px 0 15px 0;
+    letter-spacing: 3px;
+}
+
+.footer-logo p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #ccc;
+    letter-spacing: 1px;
+}
+
+/* --- Columna Contacto --- */
+.footer-contacto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contacto li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.footer-contacto i {
+    font-size: 18px;
+    color: #b8860b; /* Dorado */
+    margin-top: 3px;
+}
+
+/* --- Columna Redes --- */
+.footer-redes {
+    text-align: center;
+}
+
+.footer-redes h4 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.linea-footer {
+    width: 30px;
+    height: 1px;
+    background-color: #b8860b;
+    margin: 0 auto 20px auto;
+}
+
+.iconos-redes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.icono-circular {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #f9f7f2;
+    border-radius: 50%;
+    color: #f9f7f2;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.icono-circular:hover {
+    background-color: #b8860b;
+    border-color: #b8860b;
+}
+
+/* --- Barra Inferior --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* Botón flotante para subir */
+.btn-subir {
+    position: absolute;
+    left: 40px;
+    background-color: transparent;
+    border: 1px solid #888;
+    color: #888;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-subir:hover {
+    border-color: #b8860b;
+    color: #b8860b;
+}
+
+/* ========================================= */
+/* RESPONSIVO PARA CELULARES (Footer)        */
+/* ========================================= */
+@media (max-width: 900px) {
+    .footer-contenedor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-contacto li {
+        justify-content: center;
+    }
+    .btn-subir {
+        position: static; /* Quita el botón flotante y lo alinea normal */
+        margin-bottom: 15px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+.logo-link, .btn-reservar {
+    border: none !important;
+    outline: none !important;
+}
+
+/* ========================================= */
+/* BARRA DE RESERVACIONES                    */
+/* ========================================= */
+.barra-reservacion-contenedor {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px; /* Para que flote sobre la imagen principal */
+    position: relative;
+    z-index: 10;
+}
+
+.reserva-caja {
+    background-color: #f9f7f2;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.reserva-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+.reserva-item label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #4a3b32;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.reserva-item input, .huespedes-selector {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    /* 👇 ESTO ES LO NUEVO PARA NIVELARLOS 👇 */
+    height: 45px; 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.texto-inferior {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* --- Menú de Huéspedes --- */
+.huespedes-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.huespedes-dropdown {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 20;
+}
+
+.huespedes-dropdown.activo {
+    display: block; /* Se muestra con JS */
+}
+
+.fila-contador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.fila-contador:last-child {
+    margin-bottom: 0;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.controles button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #b8860b;
+    background-color: #fff;
+    color: #b8860b;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controles button:disabled {
+    border-color: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-buscar-disponibilidad {
+    background-color: #4a3b32;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.btn-buscar-disponibilidad:hover {
+    background-color: #b8860b;
+}
+
+/* Redimensionar calendario Flatpickr para que se vea igual que tu foto */
+.flatpickr-calendar {
+    width: 600px !important;
+}
+
+/* ========================================= */
+/* TARJETAS DE RESULTADOS (HABITACIONES)     */
+/* ========================================= */
+
+.habitacion-card {
+    /* 1. El truco principal: limitamos el ancho para que quepan varias en una línea */
+    width: 320px; 
+    
+    /* 2. Estilos visuales de la tarjeta */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra elegante */
+    overflow: hidden; /* Evita que la imagen se salga de las esquinas redondas */
+    
+    /* 3. Flexbox interno para alinear el texto y el botón */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Pequeña animación */
+}
+
+/* Efecto al pasar el mouse por encima */
+.habitacion-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Asegurarnos de que la imagen mida siempre lo mismo y no se deforme */
+.habitacion-imagen img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; 
+    border-radius: 10px 10px 0 0 !important; /* Redondea solo arriba */
+}
+
+.habitacion-info {
+    padding: 20px !important;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Empujamos el botón de reservar hasta abajo para que todas las tarjetas se vean parejas */
+.habitacion-info button {
+    margin-top: auto !important; 
+}
